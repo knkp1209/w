@@ -142,7 +142,7 @@ if (filled_out($_POST) && !empty($_FILES['img'])){
         // 空格替换成实体
         $str = str_replace(' ', "&nbsp;", $str);
         // \n 替换成 <br />
-        $str = nl2br($str);
+        // $str = nl2br($str);
 
         $query = "INSERT INTO shopdesc VALUES(NULL,$shopid,'{$_POST['title']}','$str')";
         $conn->query($query);

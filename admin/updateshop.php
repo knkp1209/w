@@ -76,7 +76,7 @@
         <div class="admin-main">
 
             <fieldset class="layui-elem-field">
-                <legend>添加商家信息</legend>
+                <legend>商家信息</legend>
                 <div class="layui-field-box">
                 <div class="goods">
     <form method="post" action="updateshopdb.php" enctype="multipart/form-data" onsubmit="return getElements()">

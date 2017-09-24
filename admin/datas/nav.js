@@ -60,4 +60,19 @@ var navs = [{
     "icon": "fa-list",
     "spread": false,
     "href": "applet.php"
-}];
+},
+{
+    "title": "商家信息",
+    "icon": "fa-list",
+    "spread": false,
+    "children": [{
+        "title": "编辑信息",
+        "icon": "fa-trash",
+        "href": "updateshop.php"
+    }, {
+        "title": "查看信息",
+        "icon": "fa-plus-square",
+        "href": "select_shop.php"
+    }]
+}
+];

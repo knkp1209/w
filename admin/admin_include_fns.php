@@ -11,9 +11,7 @@ ob_start();
 	$imgcat = '../data/catimg/';
 	$imggoods= '../data/goodsimg/';
 	$imglogo= '../data/logo/';
-	$imggoldsilde = '../images/gold/slide/';
-	
-	$imgnews = '../images/news/';
-	$imgpeople = '../images/people/';
+	$imgshop = '../data/shop/';
+
 ob_end_flush();
 ?>

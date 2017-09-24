@@ -77,9 +77,9 @@
 </select></p>
     <p><label for="ags">商品原价：</label><input id="ags" type="text" name="sprice" /></p>
     <p><label for="agp">商品现价：</label><input id="agp" type="text" name="price"></p>
-    <p><label for="agsimg">展示图片(最多15张)</label><input type="button" class="button logo"  value="选择图片" onclick="btnAction('agsimg')"><input type="file" id="agsimg" name="agsfile[]" multiple="multiple" onchange="readAsDataURL(this.files,'preags')" /></p>
+    <p><label for="agsimg">展示图片(最多15张)</label><input type="button" class="button"  value="选择图片" onclick="btnAction('agsimg')"><input type="file" id="agsimg" name="agsfile[]" multiple="multiple" onchange="readAsDataURL(this.files,'preags')" /></p>
     <div id="preags" class="prediv"></div>
-    <p><label for="agdimg">详情图片(最多15张)</label><input type="button" class="button logo"  value="选择图片" onclick="btnAction('agdimg')"><input type="file" id="agdimg" name="agdfile[]" multiple="true" onchange="readAsDataURL(this.files,'preagd')" /></p>
+    <p><label for="agdimg">详情图片(最多15张)</label><input type="button" class="button"  value="选择图片" onclick="btnAction('agdimg')"><input type="file" id="agdimg" name="agdfile[]" multiple="true" onchange="readAsDataURL(this.files,'preagd')" /></p>
     <div id="preagd" class="prediv"></div>
     <p><label for="adnum">库存数量：</label><input id="adnum" type="text" name="gdnumber"/></p>
     <p><label for="adu">单位名称：</label><input id="adu" type="text" name="unitname"/></p>

@@ -13,7 +13,7 @@ $rid = $_SESSION['customer']['rid'];
 
 
 
-function updateshopimg($file, $upload_path = "images/",$conn,$shopid)
+function uploadimg($file, $upload_path = "images/",$conn,$tb_name,$id)
 {
 
     $name = $file['name'];      //得到文件名称，以数组的形式
@@ -35,7 +35,7 @@ function updateshopimg($file, $upload_path = "images/",$conn,$shopid)
             $rname = getRandOnlyId() . $k .'.png';
 
             // 插入图片路径
-            $query = "INSERT INTO shopimg VALUES(NULL,$shopid,'$rname')";
+            $query = "INSERT INTO $tb_name VALUES(NULL,$id,'$rname')";
             $result = $conn->query($query);
 
             if(!$result){
@@ -57,7 +57,7 @@ function updateshopimg($file, $upload_path = "images/",$conn,$shopid)
         }
     }
 
-    return $images;
+    return true;
 }
 // $parameter = null;
 // $images = array();
@@ -153,7 +153,7 @@ if (filled_out($_POST) && !empty($_FILES['img'])){
             exit;
         }
 
-        if(!updateshopimg($_FILES['img'],$imgshop,$conn,$shopid)){
+        if(!uploadimg($_FILES['img'],$imgshop,$conn,'shopimg',$shopid)){
             echo '添加失败，图片!';
             $url = 'updateshop.php';
             header('Refresh: 1; url=' . $url);

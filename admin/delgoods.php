@@ -52,14 +52,46 @@ if ($num > 0) {
         <td class=\"del\">删除</td>
     </tr>";
     for ($i = 0; $i < count($result); $i++) {
+
+        $detailsimg = array();
+        $gdswpimg = array();
+
         $catname = idcvrname($result[$i]['catalogID']);
-        $gdswpimg = idcvrimg($result[$i]['gdswpimg'],2,$imggoods);
+        $goodsid = $result[$i]['goodsID'];
+
+        // 获取商品详情图
+        $query = "SELECT name FROM goods_dtl_img WHERE goodsid = $goodsid LIMIT 0,2";
+        $dtlImg = $conn->query($query);
+        if(!@$dtlImg || $dtlImg->num_rows <= 0){
+            echo "系统错误，请稍候再试。";
+        }
+        $dtlImg = db_result_to_array($dtlImg);
+
+        for($j = 0; $j < count($dtlImg); $j++){
+            $detailsimg[$j] = $imggoods.$dtlImg[$j]['name'];
+        }
+        //
+        
+        // 获取商品广告图
+        $query = "SELECT name FROM goods_bar_img WHERE goodsid = $goodsid LIMIT 0,2";
+        $barImg = $conn->query($query);
+        if(!@$barImg || $barImg->num_rows <= 0){
+            echo "系统错误，请稍候再试。";
+        }
+        $barImg = db_result_to_array($barImg);
+
+        for($j = 0; $j < count($barImg); $j++){
+            $gdswpimg[$j] = $imggoods.$barImg[$j]['name'];
+        }
+        //
+        
         if($gdswpimg)
             $gdswpimg = ssimg($gdswpimg,$stb,$std,$imggoods);
 
-        $detailsimg = idcvrimg($result[$i]['detailsimg'],2,$imggoods);
+
         if($detailsimg)
             $detailsimg = ssimg($detailsimg,$stb,$std,$imggoods);
+
         if($i % 2 == 0)
             echo '<tr class="even">';
         else

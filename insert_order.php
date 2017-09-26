@@ -77,6 +77,18 @@ if(filled_out($_POST)){
 		$price = $row['price'];
 		$goodsname = $row['gdname'];
 
+
+		// 门店地址:
+		$query = "SELECT address FROM shop where rid = $rid";
+		$address = $conn->query($query);
+		if(@$address && $address->num_rows == 1){
+			$address = $address->fetch_assoc();
+			$address = $address['address'];
+		}else{
+			$address = '商家暂未提供地址';
+		}
+		
+
 		// 商品图片名字
 		$img = $row['name'];
 		// 订单图片名字
@@ -101,7 +113,9 @@ if(filled_out($_POST)){
 
 
 		$conn->autocommit(FALSE);
-		$query = "INSERT INTO order_table VALUES(NULL,".$rid.",".$goodsid.",".$userid.",'".$customer."','".$phone."',NULL,".$number.",". $amount. "," ."'$form_date'". ",0," . "'$rname'". ",'$goodsname',".$price.")";
+		$query = "INSERT INTO order_table VALUES(NULL,".$rid.",".$goodsid.",".$userid.",'".$customer."','".$phone."',NULL,".$number.",". $amount. "," ."'$form_date'". ",0," . "'$rname'". ",'$goodsname',".$price. ",'" .$address."')";
+
+
 
 		$result = $conn->query($query);
 

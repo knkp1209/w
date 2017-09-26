@@ -18,18 +18,7 @@ require_once('db_fns.php');
 		if (@$result->num_rows > 0) {
 			$result = db_result_to_array($result);
 			for($i = 0; $i < count($result); $i++){
-				if(goodsidcvrname($result[$i]['order_goodsid'])){
-					$temp = goodsidcvrname($result[$i]['order_goodsid']);
-					$result[$i]['goodsname'] = $temp->gdname;
-					$result[$i]['price'] = $temp->price;
-					$gdswpimg = explode('#',$temp->gdswpimg);
-					for($j = 0; $j < count($gdswpimg); $j++){
-						$gdswpimg[$j] = 'https://'.$_SERVER['SERVER_NAME'].DIR.'/data/goodsimg/'.$gdswpimg[$j];
-					}
-					$result[$i]['image'] = $gdswpimg;
-				}else{
-					$result[$i]['goodsname'] = '商品已删除';
-				}	
+				$result[$i]['image'][] = 'https://'.$_SERVER['SERVER_NAME'].DIR.'/data/orderimg/'.$result[$i]['img'];
 			}
 
 
@@ -41,24 +30,11 @@ require_once('db_fns.php');
 		$result = @$conn->query($query);
 		if(!$result)
 			exit;
-		if (@$result->num_rows > 0) {
+		if (@$result->num_rows == 1) {
 			$result = db_result_to_array($result);
 			for($i = 0; $i < count($result); $i++){
-				if(goodsidcvrname($result[$i]['order_goodsid'])){
-					$temp = goodsidcvrname($result[$i]['order_goodsid']);
-					$result[$i]['goodsname'] = $temp->gdname;
-					$result[$i]['price'] = $temp->price;
-					$gdswpimg = explode('#',$temp->gdswpimg);
-					for($j = 0; $j < count($gdswpimg); $j++){
-						$gdswpimg[$j] = 'https://'.$_SERVER['SERVER_NAME'].DIR.'/data/goodsimg/'.$gdswpimg[$j];
-					}
-					$result[$i]['image'] = $gdswpimg;
-				}else{
-					$result[$i]['goodsname'] = '商品已删除';
-				}	
+				$result[$i]['image'][] = 'https://'.$_SERVER['SERVER_NAME'].DIR.'/data/orderimg/'.$result[$i]['img'];
 			}
-
-
 			$result = array("result" => $result[0]);
 			echo json_encode($result);
 		}

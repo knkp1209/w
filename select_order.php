@@ -1,5 +1,5 @@
 <?php
-require_once('db_fns.php');
+require_once('../db_fns.php');
 	require_once('const.php');
 	require_once('function.php');
 	$userid = @$_GET['userid'];

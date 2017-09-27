@@ -1,6 +1,6 @@
 <?php
 
-require_once('../db_fns.php');
+require_once('../../db_fns.php');
 // The shopping cart needs sessions, so start one
 session_start();
 
@@ -31,6 +31,8 @@ if (isset($_POST['submitted'])) { // Check if the form has been submitted.
 
 		        // Query the database.
 		        $conn = db_connect();
+		        $conn->query("set character set utf8");//读库
+				$conn->query("set names utf8");//写库
 		        $query = "select lgmail,appname,rid from tenant where lgmail='" . $n . "' and pwd=sha1('" . $p . "');";
 
 		        $result = $conn->query($query);

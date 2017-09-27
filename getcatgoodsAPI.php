@@ -13,7 +13,7 @@ class goods
 	public $gdname;
 	public $image;
 } 
-require_once('db_fns.php');
+require_once('../db_fns.php');
 require_once('const.php');
 
 $rid = @$_GET['rid'];

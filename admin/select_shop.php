@@ -85,7 +85,7 @@ if (@$result->num_rows == 1) {
 			$result = db_result_to_array($result);
 		for($i = 0; $i < count($result); $i++){
 			// $result[$i]['image'] = 'https://'.$_SERVER['SERVER_NAME'].DIR.'/data/shop/'.$result[$i]['url'];
-			$shop->img[] = 'http://'.$_SERVER['SERVER_NAME'].DIR.'/data/shop/'.$result[$i]['url'];
+			$shop->img[] = 'https://'.$_SERVER['SERVER_NAME'].DIR.'/data/shop/'.$result[$i]['url'];
 		}
 	}
 	// var_dump($shop);

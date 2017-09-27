@@ -6,7 +6,7 @@ ob_start();
 	  echo "你没有该权限";
 	  exit;
 	}
-	require_once('../db_fns.php');
+	require_once('../../db_fns.php');
 	$imgindex = '../data/swpimg/';
 	$imgcat = '../data/catimg/';
 	$imggoods= '../data/goodsimg/';

@@ -8,15 +8,7 @@
 	$conn->query("set character set utf8");//读库
 	$conn->query("set names utf8");//
 
-	$query = "SELECT catalogID,catname FROM catalog WHERE rid = $rid";
-	$result = @$conn->query($query);
-	if(!$result)
-		exit;
-	if (@$result->num_rows > 0) {
-		$catsid = db_result_to_array($result);
-	}
-
-	$query = "SELECT * FROM goods WHERE rid = $rid";
+	$query = "SELECT * FROM goods WHERE rid = $rid ORDER BY goodsID desc;";
 	$result = @$conn->query($query);
 	if(!$result)
 		exit;
@@ -37,23 +29,8 @@
 
 		}
 
-		$goodscatsid = array();
 
-		for($i = 0; $i < count($catsid); $i++){
-            $goods = array();
-            $cats = array();
-            $cats = $catsid[$i];
-			for($j = 0; $j < count($result); $j++){
-				if($catsid[$i]['catalogID'] == $result[$j]['catalogID']){
-					$goods[] = $result[$j];
-				}
-			}
-            $cats['goods'] = $goods;
-			$goodscatsid[] = $cats;
-		}
-
-	
-		$result = array("result" => $goodscatsid);
+		$result = array("result" => $result);
 		echo json_encode($result);
 	}
  ?>

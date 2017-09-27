@@ -5,7 +5,7 @@
  * @param array $post_data post键值对数据
  * @return string
  */
-require_once('db_fns.php');
+require_once('../db_fns.php');
 require_once('const.php');
 @$rid = $_GET['rid'];
 if(!$rid)

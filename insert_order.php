@@ -61,7 +61,7 @@ if(filled_out($_POST)){
 	if(@$_POST['number'] <= 0){
 		$msg =  "商品数量不能为0";
 	}
-	require_once('db_fns.php');
+	require_once('../db_fns.php');
 	require_once('const.php');
 	$conn = db_connect();
 	$conn->query("set character set utf8");//读库

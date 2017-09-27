@@ -1,6 +1,6 @@
 <?php
 
-require_once('../db_fns.php');
+require_once('../../db_fns.php');
 // The shopping cart needs sessions, so start one
 session_start();
 
